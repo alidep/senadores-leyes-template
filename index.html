@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link rel="stylesheet" href="css/main.css">
+   
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/senadores_leyes.css" />
+
+
+    <link rel="stylesheet" href="css/animate.css">
+    <script src="js/wow.min.js"></script>
+              <script>
+              new WOW().init();
+              </script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+  </head>
+
+  <body>
+          <!--Head -->
+      <header class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                <img id="logoImg" src="imgs/logo.png"
+                alt="Logo Fundacion conocimiento abierto">
+              </a>
+              <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenuHeroB" class="navbar-menu">
+              <div class="navbar-end">
+                <a class="navbar-item is-active"  href="#">
+                  Inicio
+                </a>
+                <a class="navbar-item" href="http://conocimientoabierto.org/" target="blank">
+                   Quienes Somos
+                </a>
+                <a class="navbar-item" href="https://conocimientoabierto.org/#contacto" target="blank">
+                  Contacto
+                </a>
+              </div><!--/navbar-end -->
+            </div><!--/#navbarMenuHeroB -->
+          </div><!--/container -->
+        </nav>
+      </header><!--/hero-head -->
+
+      
+<section class="hero is-info is-large">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        El Senado
+      </h1>
+      <p class="subtitle">
+       Exploramos como votaron los senadores argentinos en diferentes leyes importantes desde 2012 hasta 2018.
+      </p>
+      <img src="imgs/arrow.png" width="50px" class="animated bounce infinite" id="arrow">
+    </div>
+    </div>
+  </section>
+
+
+<!-- Sharing Links -->
+<div class="sharing-links" id="sharing-links" >
+ 
+
+
+
+<button><i class="fab fa-twitter" aria-hidden="true"></i><span class="btn-text" id="twit"></span></button>
+
+<button><i class="fab fa-facebook-f" aria-hidden="true"></i><span class="btn-text face"></span></button>
+</div>
+
+
+
+
+
+
+
+  <section class="section" id="less">
+    <div class="container intro">
+
+<div class="by-line"><span class="by">Por</span> <a href="#">Yas Garcia</a>, <a href="#">Alison Depsky</a>, <a href="#">Franco Bellomo</a> <span class="by">y</span> <a href="#">Roque De Benedictus</a> </div>      <div class="fecha">1 de Augusto, 2018</div><br>
+<p>
+                    <span class="intro-first">En Argentina</span> vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    <a href="http://www.cij.gov.ar/nota-9277-La-C-mara-Federal-reglament--un-nuevo-sistema-para-la-adjudicaci-n-de-causas.html" target="_blank">“Consectetur Elit”</a> nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+
+ 
+
+   </div>
+  </section>
+
+
+      
+
+      <div class="btns">
+        <button id="vista-leyes">Por Persona</button><button id="vista-mapa">Por Provincia</button>
+      </div>
+      <div class="btns2" id="btns2">
+<button id="vista-actuales">Actuales</button><button onClick = "plot()">Historicales</button></div>
+
+<div id="thing">
+<div class="svg-graph">
+  
+      <div class="columns">
+        <svg id="graph"></svg>
+      </div>
+
+</div>
+
+</div>
+
+
+  <section class="section">
+    <div class="container">
+<h2>Aclaraciones técnicas</h2>
+  <br>          <h3>Como eligimos los leyes</h3>
+            <ol>
+                <li>
+                    Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
+                </li>
+                <li>
+                   Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
+                </li>
+
+            </ol>
+
+   </div>
+  </section>
+
+
+
+  <section class="section blue-bg">
+    <div class="container" >
+<h2>Créditos</h2>
+            <p style="color:#fff; font-family: 'Hind', sans-serif;">
+                Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
+            </p>
+   </div>
+  </section>
+
+
+
+  <footer class="footer">
+  
+    <div class="columns is-gapless is-centered">
+      <div class="column is-one-quarter">
+        <img src="imgs/logofca.png" id="footerimg">
+      </div>
+       <div class="column is-one-quarter"><img src="imgs/ogp.jpg" id="footerimg">
+      </div>
+       <div class="column is-one-quarter"><img src="imgs/ACIJ.png" id="footerimg">
+      </div>
+    </div>
+    <br>
+  <div class="content has-text-centered">
+    <p style="color:#fff;">
+      Este sitio web se encuentra licenciado bajo <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY SA 4.0</a>. <img src="imgs/creativecommons.png" width="75px">
+    </p>
+  </div>
+
+</footer>
+    <!-- Plot tool tip -->
+    <div id="tooltip" class="hidden">
+      <p id="value"></p>
+    </div>
+
+    <script src="js/senadores_leyes.js"></script>
+  </body>
+</html>
