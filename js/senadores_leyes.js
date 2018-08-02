@@ -154,24 +154,78 @@ function calculateCenetrs () {
  /* if actuales or no */
 
  datos.forEach(d => {
-  if(d.nombre === "leguizamón_maría_laura" || 
-     d.nombre === "terragno_rodolfo" || 
-     d.nombre ==="pampuro_josé_juan_bautista" ||
-     d.nombre === "fernandez_de_kirchner_cristina" || 
-     d.nombre === "colombo_de_acevedo_maría_teresa" || 
-     d.nombre === "saadi_ramón_eduardo" || 
-     d.nombre === "castillo_oscar_aníbal" || 
-     d.nombre === "urquia_roberto_daniel"|| 
-     d.nombre === "rossi_carlos_alberto"|| 
-     d.nombre === "urquia_roberto_daniel"|| 
-     d.nombre === "rossi_carlos_alberto"|| 
-     d.nombre === "urquia_roberto_daniel"|| 
-     d.nombre === "rossi_carlos_alberto"|| 
-     d.nombre === "urquia_roberto_daniel"|| 
-     d.nombre === "rossi_carlos_alberto"|| 
-     d.nombre === "urquia_roberto_daniel"|| 
-     d.nombre === "rossi_carlos_alberto"|| 
-     d.nombre === "sanchez_maría_dora" ){
+  if(d.nombre === "aguilar_eduardo_alberto" || 
+     d.nombre === "almirón_ana_claudia" || 
+     d.nombre ==="alperovich_josé_jorge" ||
+     d.nombre === "basualdo_roberto_gustavo" || 
+     d.nombre === "blas_inés_imelda" || 
+     d.nombre === "boyadjian_miriam_ruth" || 
+     d.nombre === "braillard_poccard_néstor_pedro" || 
+     d.nombre === "brizuela_y_doria_de_cara_olga_ines"|| 
+     d.nombre === "bullrich_esteban_jose"|| 
+     d.nombre === "caserio_carlos_alberto"|| 
+     d.nombre === "castillo_oscar_aníbal"|| 
+     d.nombre === "catalán_magni_julio_césar"|| 
+     d.nombre === "catalfamo_maría_eugenia"|| 
+     d.nombre === "closs_maurice_fabián"|| 
+     d.nombre === "cobos_julio_césar_cleto"|| 
+     d.nombre === "costa_eduardo_raúl"|| 
+     d.nombre === "crexell_carmen_lucila"|| 
+     d.nombre === "de_angeli_alfredo_luis"|| 
+     d.nombre === "elías_de_perez_silvia_beatriz" || 
+     d.nombre ==="espínola_carlos_mauricio" ||
+     d.nombre === "fernández_de_kirchner_cristina" || 
+     d.nombre === "fernández_sagasti_anabel" || 
+     d.nombre === "fiad_mario_raymundo" || 
+     d.nombre === "fiore_viñuales_maría_cristina_del_valle" || 
+     d.nombre === "fuentes_marcelo_jorge"|| 
+     d.nombre === "garcía_larraburu_silvina_marcela"|| 
+     d.nombre === "giacoppo_silvia_del_rosario"|| 
+     d.nombre === "gonzález_gladys_esther"|| 
+     d.nombre === "gonzález_maría_teresa_margarita"|| 
+     d.nombre === "gonzález_nancy_susana"|| 
+     d.nombre === "guastavino_pedro_guillermo_ángel"|| 
+     d.nombre === "ianni_ana_maría"|| 
+     d.nombre === "itúrrez_de_cappellini_ada_rosa_del_valle"|| 
+     d.nombre === "kunath_sigrid_elisabeth"|| 
+     d.nombre === "lópez_valverde_cristina_del_carmen"|| 
+     d.nombre === "lovera_daniel_aníbal" || 
+     d.nombre ==="luenzo_alfredo_héctor" ||
+     d.nombre === "marino_juan_carlos" || 
+     d.nombre === "martínez_ernesto_félix" || 
+     d.nombre === "martínez_julio_césar" || 
+     d.nombre === "mayans_josé_miguel_ángel" || 
+     d.nombre === "menem_carlos_saúl"|| 
+     d.nombre === "mera_dalmacio"|| 
+     d.nombre === "mirkin_beatriz_graciela"|| 
+     d.nombre === "montenegro_gerardo_antenor"|| 
+     d.nombre === "odarda_maría_magdalena"|| 
+     d.nombre === "ojeda_josé_anatolio"|| 
+     d.nombre === "pais_juan_mario"|| 
+     d.nombre === "pereyra_guillermo_juan"|| 
+     d.nombre === "perotti_omar_ángel"|| 
+     d.nombre === "petcoff_naidenoff_luis_carlos"|| 
+     d.nombre === "pichetto_miguel_ángel"|| 
+     d.nombre === "pilatti_vergara_maría_inés" || 
+     d.nombre ==="pinedo_federico" ||
+     d.nombre === "poggi_claudio_javier" || 
+     d.nombre === "porcel_de_riccobelli_blanca" || 
+     d.nombre === "reutemann_carlos_alberto" || 
+     d.nombre === "rodríguez_machado_laura_elena" || 
+     d.nombre === "rodríguez_saá_adolfo"|| 
+     d.nombre === "romero_juan_carlos"|| 
+     d.nombre === "rozas_ángel"|| 
+     d.nombre === "sacnun_maría_de_los_ángeles"|| 
+     d.nombre === "schiavoni_humberto_luis_arturo"|| 
+     d.nombre === "snopek_guillermo_eugenio_mario"|| 
+     d.nombre === "solanas_fernando_ezequiel"|| 
+     d.nombre === "solari__quintana_magdalena"|| 
+     d.nombre === "tapia_maría_belén"|| 
+     d.nombre === "uñac_josé_rubén"|| 
+     d.nombre === "urtubey_rodolfo_julio"|| 
+     d.nombre === "varela_marta"|| 
+     d.nombre === "verasay_pamela_fernanda"
+     ){
 d.actual = "si"
   }else{
 d.actual = "no"
@@ -344,14 +398,14 @@ function zoomed () {
 }
 
 
-function plot () {
+function plot() {
   // Show the axis
   g.selectAll('.axis .tick text')
     .transition()
     .attr('opacity', '1')
 
 
-  // Hidden the map
+  // Hide the map
   g.selectAll('.map')
     .attr('opacity', '0')
     .on('click', d => { return {} })
@@ -436,6 +490,7 @@ function plotActuales(){
     .on('tick', ticked)
 
 }
+
 
 function plotMap () {
   // Hidden the axis
@@ -750,6 +805,8 @@ function mouseout (d) {
 
 d3.select('#vista-leyes').on('click', d => {
   plot()
+    g.selectAll('.map')
+    .attr('opacity', '0')
 
 })
 
