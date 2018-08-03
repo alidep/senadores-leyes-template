@@ -19,6 +19,7 @@ var svgSize = {width: 0, height: 0}
 var margin = {top: 50, right: 0, bottom: 0, left: 0}
 
 //
+var showActual = false
 var clicked = false
 var active = d3.select(null)
 
@@ -152,103 +153,94 @@ function calculateCenetrs () {
     d.radio = radio1
   })
 
- /* if actuales or no */
+  /* if actuales or no */
 
- datos.forEach(d => {
-  if(d.nombre === "aguilar_eduardo_alberto" || 
-     d.nombre === "almirón_ana_claudia" || 
-     d.nombre === "alperovich_josé_jorge" ||
-     d.nombre === "basualdo_roberto_gustavo" || 
-     d.nombre === "blas_inés_imelda" || 
-     d.nombre === "boyadjian_miriam_ruth" || 
-     d.nombre === "braillard_poccard_néstor_pedro" || 
-     d.nombre === "brizuela_y_doria_de_cara_olga_ines"|| 
-     d.nombre === "bullrich_esteban_jose"|| 
-     d.nombre === "caserio_carlos_alberto"|| 
-     d.nombre === "castillo_oscar_aníbal"|| 
-     d.nombre === "catalán_magni_julio_césar"|| 
-     d.nombre === "catalfamo_maría_eugenia"|| 
-     d.nombre === "closs_maurice_fabián"|| 
-     d.nombre === "cobos_julio_césar_cleto"|| 
-     d.nombre === "costa_eduardo_raúl"|| 
-     d.nombre === "crexell_carmen_lucila"|| 
-     d.nombre === "de_angeli_alfredo_luis"|| 
-     d.nombre === "elías_de_perez_silvia_beatriz" || 
-     d.nombre === "espínola_carlos_mauricio" ||
-     d.nombre === "fernández_de_kirchner_cristina" || 
-     d.nombre === "fernández_sagasti_anabel" || 
-     d.nombre === "fiad_mario_raymundo" || 
-     d.nombre === "fiore_viñuales_maría_cristina_del_valle" || 
-     d.nombre === "fuentes_marcelo_jorge"|| 
-     d.nombre === "garcía_larraburu_silvina_marcela"|| 
-     d.nombre === "giacoppo_silvia_del_rosario"|| 
-     d.nombre === "gonzález_gladys_esther"|| 
-     d.nombre === "gonzález_maría_teresa_margarita"|| 
-     d.nombre === "gonzález_nancy_susana"|| 
-     d.nombre === "guastavino_pedro_guillermo_ángel"|| 
-     d.nombre === "ianni_ana_maría"|| 
-     d.nombre === "itúrrez_de_cappellini_ada_rosa_del_valle"|| 
-     d.nombre === "kunath_sigrid_elisabeth"|| 
-     d.nombre === "lópez_valverde_cristina_del_carmen"|| 
-     d.nombre === "lovera_daniel_aníbal" || 
-     d.nombre === "luenzo_alfredo_héctor" ||
-     d.nombre === "marino_juan_carlos" || 
-     d.nombre === "martínez_ernesto_félix" || 
-     d.nombre === "martínez_julio_césar" || 
-     d.nombre === "mayans_josé_miguel_ángel" || 
-     d.nombre === "menem_carlos_saúl"|| 
-     d.nombre === "mera_dalmacio"|| 
-     d.nombre === "mirkin_beatriz_graciela"|| 
-     d.nombre === "montenegro_gerardo_antenor"|| 
-     d.nombre === "odarda_maría_magdalena"|| 
-     d.nombre === "ojeda_josé_anatolio"|| 
-     d.nombre === "pais_juan_mario"|| 
-     d.nombre === "pereyra_guillermo_juan"|| 
-     d.nombre === "perotti_omar_ángel"|| 
-     d.nombre === "petcoff_naidenoff_luis_carlos"|| 
-     d.nombre === "pichetto_miguel_ángel"|| 
-     d.nombre === "pilatti_vergara_maría_inés" || 
-     d.nombre === "pinedo_federico" ||
-     d.nombre === "poggi_claudio_javier" || 
-     d.nombre === "porcel_de_riccobelli_blanca" || 
-     d.nombre === "reutemann_carlos_alberto" || 
-     d.nombre === "rodríguez_machado_laura_elena" || 
-     d.nombre === "rodríguez_saá_adolfo"|| 
-     d.nombre === "romero_juan_carlos"|| 
-     d.nombre === "rozas_ángel"|| 
-     d.nombre === "sacnun_maría_de_los_ángeles"|| 
-     d.nombre === "schiavoni_humberto_luis_arturo"|| 
-     d.nombre === "snopek_guillermo_eugenio_mario"|| 
-     d.nombre === "solanas_fernando_ezequiel"|| 
-     d.nombre === "solari__quintana_magdalena"|| 
-     d.nombre === "tapia_maría_belén"|| 
-     d.nombre === "uñac_josé_rubén"|| 
-     d.nombre === "urtubey_rodolfo_julio"|| 
-     d.nombre === "varela_marta"|| 
-     d.nombre === "verasay_pamela_fernanda"|| 
-     d.nombre === "durango_norma_haydée"
-     ){
-d.actual = "si"
-  }else{
-d.actual = "no"
-  }
+  datos.forEach(d => {
+    if (d.nombre === "aguilar_eduardo_alberto" ||
+        d.nombre === "almirón_ana_claudia" ||
+        d.nombre ==="alperovich_josé_jorge" ||
+        d.nombre === "basualdo_roberto_gustavo" ||
+        d.nombre === "blas_inés_imelda" ||
+        d.nombre === "boyadjian_miriam_ruth" ||
+        d.nombre === "braillard_poccard_néstor_pedro" ||
+        d.nombre === "brizuela_y_doria_de_cara_olga_ines"||
+        d.nombre === "bullrich_esteban_jose"||
+        d.nombre === "caserio_carlos_alberto"||
+        d.nombre === "castillo_oscar_aníbal"||
+        d.nombre === "catalán_magni_julio_césar"||
+        d.nombre === "catalfamo_maría_eugenia"||
+        d.nombre === "closs_maurice_fabián"||
+        d.nombre === "cobos_julio_césar_cleto"||
+        d.nombre === "costa_eduardo_raúl"||
+        d.nombre === "crexell_carmen_lucila"||
+        d.nombre === "de_angeli_alfredo_luis"||
+        d.nombre === "elías_de_perez_silvia_beatriz" ||
+        d.nombre ==="espínola_carlos_mauricio" ||
+        d.nombre === "fernández_de_kirchner_cristina" ||
+        d.nombre === "fernández_sagasti_anabel" ||
+        d.nombre === "fiad_mario_raymundo" ||
+        d.nombre === "fiore_viñuales_maría_cristina_del_valle" ||
+        d.nombre === "fuentes_marcelo_jorge"||
+        d.nombre === "garcía_larraburu_silvina_marcela"||
+        d.nombre === "giacoppo_silvia_del_rosario"||
+        d.nombre === "gonzález_gladys_esther"||
+        d.nombre === "gonzález_maría_teresa_margarita"||
+        d.nombre === "gonzález_nancy_susana"||
+        d.nombre === "guastavino_pedro_guillermo_ángel"||
+        d.nombre === "ianni_ana_maría"||
+        d.nombre === "itúrrez_de_cappellini_ada_rosa_del_valle"||
+        d.nombre === "kunath_sigrid_elisabeth"||
+        d.nombre === "lópez_valverde_cristina_del_carmen"||
+        d.nombre === "lovera_daniel_aníbal" ||
+        d.nombre ==="luenzo_alfredo_héctor" ||
+        d.nombre === "marino_juan_carlos" ||
+        d.nombre === "martínez_ernesto_félix" ||
+        d.nombre === "martínez_julio_césar" ||
+        d.nombre === "mayans_josé_miguel_ángel" ||
+        d.nombre === "menem_carlos_saúl"||
+        d.nombre === "mera_dalmacio"||
+        d.nombre === "mirkin_beatriz_graciela"||
+        d.nombre === "montenegro_gerardo_antenor"||
+        d.nombre === "odarda_maría_magdalena"||
+        d.nombre === "ojeda_josé_anatolio"||
+        d.nombre === "pais_juan_mario"||
+        d.nombre === "pereyra_guillermo_juan"||
+        d.nombre === "perotti_omar_ángel"||
+        d.nombre === "petcoff_naidenoff_luis_carlos"||
+        d.nombre === "pichetto_miguel_ángel"||
+        d.nombre === "pilatti_vergara_maría_inés" ||
+        d.nombre ==="pinedo_federico" ||
+        d.nombre === "poggi_claudio_javier" ||
+        d.nombre === "porcel_de_riccobelli_blanca" ||
+        d.nombre === "reutemann_carlos_alberto" ||
+        d.nombre === "rodríguez_machado_laura_elena" ||
+        d.nombre === "rodríguez_saá_adolfo"||
+        d.nombre === "romero_juan_carlos"||
+        d.nombre === "rozas_ángel"||
+        d.nombre === "sacnun_maría_de_los_ángeles"||
+        d.nombre === "schiavoni_humberto_luis_arturo"||
+        d.nombre === "snopek_guillermo_eugenio_mario"||
+        d.nombre === "solanas_fernando_ezequiel"||
+        d.nombre === "solari__quintana_magdalena"||
+        d.nombre === "tapia_maría_belén"||
+        d.nombre === "uñac_josé_rubén"||
+        d.nombre === "urtubey_rodolfo_julio"||
+        d.nombre === "varela_marta"||
+        d.nombre === "verasay_pamela_fernanda") {
+          d.actual = "si"
+        } else {
+          d.actual = "no"
+        }
+      })
 
+  /* radios para los actuales */
+  datos.forEach(d => {
+    if (d.actual === "si") {
+      d.radio3 = radio3
+    } else {
+      d.radio3 = 0
+    }
   })
-
-
- /* radios para los actuales */
-
- datos.forEach(d => {
-  if(d.actual === "si"){
-d.radio3 = radio3
-  }else{
-d.radio3 = 0
-  }
-
-  })
-
-
-
 
   /* radios para el mapa */
   var nombres = []
@@ -263,22 +255,18 @@ d.radio3 = 0
 
     nodosIguales1.forEach((d, i) => {
       if (i === 0 && d.actual === "si") {
-d.radio4 = radio4
-d.radio2 = radio2
+        d.radio4 = radio4
+        d.radio2 = radio2
       } else if (i === 0) {
         d.radio2 = radio2
         d.radio4 = 0
-        
-    
       } else {
         d.radio2 = 0
         d.radio4 = 0
-       
-      } 
+      }
     })
   })
 }
-
 
 
 function appendAll () {
@@ -321,7 +309,6 @@ function appendAll () {
     .attr('xlink:href', d => { return 'imgs/' + d.img })
     .attr('id', d => { return d.nombre })
 
-
   var xAxis = d3.axisBottom(xScale)
     .tickValues(['A FAVOR', 'EN CONTRA', 'SE ABSTIENE', 'EN AUSCENCIA'])
 
@@ -346,14 +333,8 @@ function appendAll () {
     .call(yAxis)
     .selectAll('.tick text')
     .call(wrap, yAxisSize)
-    .on("mouseover", function(d){
-            tooltip
-              .style("left", d3.event.pageX - 50 + "px")
-              .style("top", d3.event.pageY - 70 + "px")
-              .style("display", "inline-block")
-              .html((d.bloque) + "<br>" + "£" + (d.voto));
-        })
-        .on("mouseout", function(d){ tooltip.style("display", "none");})
+    .on("mouseover", d => { mouseover(d, true) })
+    .on("mouseout", d => { mouseout(d) })
 
   // Remove the domain and lines
   g.selectAll('.axis .domain')
@@ -395,7 +376,7 @@ function zoomReset () {
 
   svg.transition()
     .duration(750)
-    .call(zoom.transform, d3.zoomIdentity)
+    .call(zoom.transform, d3.zoomIdentity.translate(0, 50))
 }
 
 
@@ -418,7 +399,6 @@ function plot() {
     .transition()
     .attr('opacity', '1')
 
-
   // Hide the map
   g.selectAll('.map')
     .attr('opacity', '0')
@@ -438,47 +418,30 @@ function plot() {
   node.selectAll('circle')
     .attr('r', radio1)
 
-    
-
-
   // Append the photos
   node.selectAll('image')
     .attr('x', d => { return -d.radio })
     .attr('y', d => { return -d.radio })
     .attr('width', d => { return d.radio * 2 })
     .attr('height', d => { return d.radio * 2 })
-    .on('mouseover', function (d) { mouseover(d); imageHoverOver(d, this) })
+    .on('mouseover', function (d) { mouseover(d, false); imageHoverOver(d, this) })
     .on('mouseleave', function (d) { mouseout(d); imageHoverLeave(d, this) })
     .on('click', d => { return imageClick(d) })
 
-  
-var btns2op = document.getElementById("btns2");
 
-btns2op.style.display = "block";
+  var btns2op = document.getElementById("btns2")
+  btns2op.style.display = "block"
 
+  var svgBg = document.getElementById("graph")
+  svgBg.style.background = "linear-gradient(to right, #ffffff 20%, #9BE0B4 20%, #9BE0B4 38%, #F4ABAF 38%, #F4ABAF 56%, #F9F4B7 56%, #F9F4B7 74%, #FFFFFF 74%)"
 
-var svgBg = document.getElementById("graph");
-
-svgBg.style.background = "linear-gradient(to right, #ffffff 20%, #9BE0B4 20%, #9BE0B4 38%, #F4ABAF 38%, #F4ABAF 56%, #F9F4B7 56%, #F9F4B7 74%, #FFFFFF 74%)";
-  //
-
-
-var dropDown = document.getElementById("whatwhat");
-
-dropDown.style.display = "none";
+  var dropDown = document.getElementById("whatwhat")
+  dropDown.style.display = "none"
 
   simulation
     .nodes(datos)
     .on('tick', ticked)
-
-
-
-
-
-
-
 }
-
 
 
 function plotActuales(){
@@ -502,12 +465,13 @@ function plotActuales(){
     .attr('height', d => { return d.radio3 * 2 })
     .attr('x', d => { return -d.radio3 })
     .attr('y', d => { return -d.radio3 })
-
+    .on('mouseover', function (d) { mouseover(d, false); imageHoverOver(d, this) })
+    .on('mouseleave', d => { mouseout(d); imageHoverLeave(d, this) })
+    .on('click', d => { return imageClick(d) })
 
   simulation
     .nodes(datos)
     .on('tick', ticked)
-
 }
 
 
@@ -517,15 +481,12 @@ function plotMap () {
     .transition()
     .attr('opacity', '0')
 
-
-
   // Show the map
   g.selectAll('.map')
     .on('click', zoomOverState)
     .transition()
     .duration(3000)
     .attr('opacity', '1')
-
 
   simulation.nodes(datos).alphaTarget(1).restart()
     .force('x', d3.forceX().strength(forceStrength).x(d => { return d.centro2.x }))
@@ -549,30 +510,25 @@ function plotMap () {
     .attr('x', d => { return -d.radio2 })
     .attr('y', d => { return -d.radio2 })
 
+  //
+  var btns2op = document.getElementById("btns2")
+  btns2op.style.display = "none"
 
-var btns2op = document.getElementById("btns2");
+  var svgBg = document.getElementById("graph")
+  svgBg.style.background = "white"
 
-btns2op.style.display = "none";
-
-
-var svgBg = document.getElementById("graph");
-
-svgBg.style.background = "white";
-
-
-var dropDown = document.getElementById("whatwhat");
-
-dropDown.style.display = "block";
+  var dropDown = document.getElementById("whatwhat")
+  dropDown.style.display = "block"
 
   simulation
     .nodes(datos)
     .on('tick', ticked)
 }
 
-
-
 function plotMapActuales () {
+  /*
 
+  */
   simulation.nodes(datos).alphaTarget(1).restart()
     .force('x', d3.forceX().strength(forceStrength).x(d => { return d.centro2.x }))
     .force('y', d3.forceY().strength(forceStrength).y(d => { return d.centro2.y }))
@@ -595,13 +551,10 @@ function plotMapActuales () {
     .attr('x', d => { return -d.radio4 })
     .attr('y', d => { return -d.radio4 })
 
-
-
   simulation
     .nodes(datos)
     .on('tick', ticked)
 }
-
 
 
 function ticked () {
@@ -618,65 +571,80 @@ function ticked () {
 
 
 function color (bloque) {
-  return bloque == 'Justicialista' ? '#0101DF' :
-    bloque == 'Partido de la Victoria' ? '#FC5656' :
+  return bloque == 'Chubut Somos Todos' ? '#27206d' :
+    bloque == 'Coalición Cívica' ? '#2ca02c' :
     bloque == 'Chubut Somos Todos' ? '#519E19' :
     bloque == 'Coalición Cívica' ? '#2ca02c' :
-    bloque == 'Federalismo Santafesino' ? '#DD52D0' :
-    bloque == 'Frente Cívico de Córdoba' ? '#519E19' :
+    bloque == 'Federalismo Santafesino' ? '#003685' :
+    bloque == 'Federalismo y Liberación' ? '#003685' :
     bloque == 'Frente Cívico por Santiago' ? '#4b088a' :
-    bloque == 'Frente Cívico y Social de Catamarca' ? '#519E19' :
-    bloque == 'Frente de Todos' ? '#519E19' :
-    bloque == 'Frente Popular' ? '#519E19' :
-    bloque == 'Frente Pro' ? '#e7ba52' :
-    bloque == 'Frente Progresista-CC-ARI' ? '#519E19' :
-    bloque == 'Fuerza Republicana' ? '#519E19' :
-    bloque == 'GEN' ? '#519E19' :
-    bloque == 'Justicialista 8 de Octubre' ? '#519E19' :
-    bloque == 'Justicialista La Pampa' ? '#519E19' :
-    bloque == 'Justicialista para el Dialogo de Los Argentinos' ? '#519E19' :
+    bloque == 'Frente Cívico de Córdoba' ? '#2980b9' :
+    bloque == 'Frente Cívico por Santiago' ? '#4b088a' :
+    bloque == 'Frente Cívico y Social de Catamarca' ? '#4b088a' :
+    bloque == 'Frente Popular' ? '#d03c28' :
+    bloque == 'Frente Pro' ? '#FDDA33' :
+    bloque == 'Fuerza Republicana' ? '#042b4f' :
+    bloque == 'GEN' ? '#a5a6a8' :
+    bloque == 'Justicialista 8 de Octubre' ? '#0F63A8' :
+    bloque == 'Justicialista La Pampa' ? '#0F63A8' :
+    bloque == 'Justicialista para el Dialogo de Los Argentinos' ? '#0F63A8' :
     bloque == 'Justicialista San Luis' ? '#bf5b17' :
-    bloque == 'Justicialista-Frente para la Victoria' ? '#1f77b4' :
-    bloque == 'Liberal de Corrientes' ? '#519E19' :
+    bloque == 'Justicialista-Frente para la Victoria' ? '#4eaee8' :
+    bloque == 'Justicialista' ? '#0F63A8' :
+    bloque == 'Liberal de Corrientes' ? '#2a9afb' :
     bloque == 'Misiones' ? '#EDBB99' :
-    bloque == 'Movimiento Popular Fueguino' ? '#519E19' :
-    bloque == 'Movimiento Popular Neuquino' ? '#519E19' :
-    bloque == 'Nuevo Encuentro' ? '#519E19' :
-    bloque == 'PARES' ? '#519E19' :
-    bloque == 'Partido Nuevo' ? '#519E19' :
-    bloque == 'Federalismo y Liberación' ? '#48B9FF' : '#50C1FF';
+    bloque == 'Movimiento Popular Fueguino' ? '#3eaef2' :
+    bloque == 'Movimiento Popular Neuquino' ? '#3eaef2' :
+    bloque == 'Nuevo Encuentro' ? '#43a6bb' :
+    bloque == 'PARES' ? '#337137' :
+    bloque == 'Pro y Unión por Entre Ríos ' ? '#e7ba52' :
+    bloque == 'Proyecto Sur-UNEN' ? '#194850' :
+    bloque == 'Renovador de Salta' ? '#3babf2' :
+    bloque == 'Santa Fe Federal' ? '#244a02' :
+    bloque == 'Socialista' ? '#fa58f4' :
+    bloque == 'Unión Cívica Radical' ? '#d62728' :
+    bloque == 'Unión por Córdoba' ? '#d62728' :
+    bloque == 'Vecinalista - Partido Nuevo' ? '#1f1046' :
+    bloque == 'Partido de la Victoria' ? '#4eaee8' : '#e5e5e5';
 }
 
 
 function colorStroke (bloque) {
-  return bloque == 'Justicialista' ? '#0101DF' :
-    bloque == 'Partido de la Victoria' ? '#FC5656' :
+  return bloque == 'Chubut Somos Todos' ? '#27206d' :
+    bloque == 'Coalición Cívica' ? '#2ca02c' :
     bloque == 'Chubut Somos Todos' ? '#519E19' :
     bloque == 'Coalición Cívica' ? '#2ca02c' :
-    bloque == 'Federalismo Santafesino' ? '#DD52D0' :
-    bloque == 'Frente Cívico de Córdoba' ? '#519E19' :
+    bloque == 'Federalismo Santafesino' ? '#003685' :
+    bloque == 'Federalismo y Liberación' ? '#003685' :
     bloque == 'Frente Cívico por Santiago' ? '#4b088a' :
-    bloque == 'Frente Cívico y Social de Catamarca' ? '#519E19' :
-    bloque == 'Frente de Todos' ? '#519E19' :
-    bloque == 'Frente Popular' ? '#519E19' :
-    bloque == 'Frente Pro' ? '#e7ba52' :
-    bloque == 'Frente Progresista-CC-ARI' ? '#FC5656' :
-    bloque == 'Fuerza Republicana' ? '#519E19' :
-    bloque == 'GEN' ? '#519E19' :
-    bloque == 'Justicialista 8 de Octubre' ? '#519E19' :
-    bloque == 'Justicialista La Pampa' ? '#FC5656' :
-    bloque == 'Justicialista para el Dialogo de Los Argentinos' ? '#519E19' :
+    bloque == 'Frente Cívico de Córdoba' ? '#2980b9' :
+    bloque == 'Frente Cívico por Santiago' ? '#4b088a' :
+    bloque == 'Frente Cívico y Social de Catamarca' ? '#4b088a' :
+    bloque == 'Frente Popular' ? '#d03c28' :
+    bloque == 'Frente Pro' ? '#FDDA33' :
+    bloque == 'Fuerza Republicana' ? '#042b4f' :
+    bloque == 'GEN' ? '#a5a6a8' :
+    bloque == 'Justicialista 8 de Octubre' ? '#0F63A8' :
+    bloque == 'Justicialista La Pampa' ? '#0F63A8' :
+    bloque == 'Justicialista para el Dialogo de Los Argentinos' ? '#0F63A8' :
     bloque == 'Justicialista San Luis' ? '#bf5b17' :
-    bloque == 'Justicialista-Frente para la Victoria' ? '#1f77b4' :
-    bloque == 'Liberal de Corrientes' ? '#519E19' :
+    bloque == 'Justicialista-Frente para la Victoria' ? '#4eaee8' :
+    bloque == 'Justicialista' ? '#0F63A8' :
+    bloque == 'Liberal de Corrientes' ? '#2a9afb' :
     bloque == 'Misiones' ? '#EDBB99' :
-    bloque == 'Movimiento Popular Fueguino' ? '#519E19' :
-    bloque == 'Movimiento Popular Neuquino' ? '#519E19' :
-    bloque == 'Nuevo Encuentro' ? '#519E19' :
-    bloque == 'PARES' ? '#519E19' :
-    bloque == 'Partido Nuevo' ? '#519E19' :
-    bloque == 'Federalismo y Liberación' ? '#48B9FF' :
-    bloque == 'Unión Cívica Radical' ? '#d62728' : '#d62728';
+    bloque == 'Movimiento Popular Fueguino' ? '#3eaef2' :
+    bloque == 'Movimiento Popular Neuquino' ? '#3eaef2' :
+    bloque == 'Nuevo Encuentro' ? '#43a6bb' :
+    bloque == 'PARES' ? '#337137' :
+    bloque == 'Pro y Unión por Entre Ríos ' ? '#e7ba52' :
+    bloque == 'Proyecto Sur-UNEN' ? '#194850' :
+    bloque == 'Renovador de Salta' ? '#3babf2' :
+    bloque == 'Santa Fe Federal' ? '#244a02' :
+    bloque == 'Socialista' ? '#fa58f4' :
+    bloque == 'Unión Cívica Radical' ? '#d62728' :
+    bloque == 'Unión por Córdoba' ? '#d62728' :
+    bloque == 'Vecinalista - Partido Nuevo' ? '#1f1046' :
+    bloque == 'Partido de la Victoria' ? '#4eaee8' : '#e5e5e5';
 }
 
 
@@ -706,7 +674,6 @@ function imageHoverOver (d, that) {
       .attr('y', d => { return -d.radio })
       .attr('width', d => { return d.radio * 3 })
       .attr('height', d => { return d.radio * 3 })
-
   }
 }
 
@@ -746,13 +713,12 @@ function imageClick (d) {
       .attr('width', d => { return d.radio * 3 })
       .attr('height', d => { return d.radio * 3 })
 
-
     // set click as true
     clicked = true
   } else {
     /*
-    nodosIguales.forEach(dd => {
-      dd.radio = radio1
+    datos.forEach(d => {
+      d.radio = radio1
     })
 
     d3.selectAll('#' + d.nombre)
@@ -762,9 +728,20 @@ function imageClick (d) {
       .attr('width', d => { return d.radio * 2 })
       .attr('height', d => { return d.radio * 2 })
     */
-    datos.forEach(d => {
-      d.radio = radio1
-    })
+
+    if (showActual === true) {
+      datos.forEach(d => {
+        if (d.actual === 'si') {
+          d.radio = radio3
+        } else {
+          d.radio = 0
+        }
+      })
+    } else {
+      datos.forEach(d => {
+        d.radio = radio1
+      })
+    }
 
     d3.selectAll('image')
       .transition()
@@ -772,7 +749,6 @@ function imageClick (d) {
       .attr('y', d => { return -d.radio })
       .attr('width', d => { return d.radio * 2 })
       .attr('height', d => { return d.radio * 2 })
-
 
     // set click as false
     clicked = false
@@ -782,11 +758,66 @@ function imageClick (d) {
   simulation.nodes(datos).alphaTarget(0.1).restart()
 }
 
+function mouseover (d, isAxis) {
+ /*
+   On mouse over highlight the rect and shoe the tooltip
+ */
+ var xOffSet
+ var yOffSet
+ var text
+
+ if (isAxis) {
+   xOffSet = 0
+   yOffSet = 40
+
+   var date = d === 'matrimonio igualitario' ? '21 de julio 2010' :
+    d === 'identidad de genero' ? '23 de mayo 2012':
+      d === 'regimen empreadas domesticas' ? '03 de abril 2013' :
+        d === 'inceminacion arifical' ? '25 de julio 2013':
+          d === 'trata personas' ? '29 de abril 2008':
+            d === 'educacion sexual integral' ? '23 de octubre 2006':
+              d === 'asignacion universal' ? '16 de julio de 2015':
+                d === 'reforma provicional' ? '26 de diciembre 2017' : ''
+
+   text = '<strong>Ley:</strong> ' + d +
+          '<br /><strong>Fecha de aprobacion:</strong> ' + date +
+          '<br /><strong>Descripcion:</strong> '
+ } else {
+   xOffSet = 150
+   yOffSet = 80
+   text = '<strong>Nombre:</strong> ' + d.nombre.replace(/_/g, ' ') +
+          '<br /><strong>Bloque:</strong> ' + d.bloque +
+          '<br /><strong>Distrito:</strong> ' + d.distrito
+ }
+
+ // Update the tooltip position and value
+ d3.select('#tooltip')
+   .style('left', (d3.event.pageX - xOffSet) + 'px')
+   .style('top', (d3.event.pageY + yOffSet) + 'px')
+   .select('#value')
+   .html(() => { return text })
+
+ // Show the tooltip
+ d3.select('#tooltip').classed('hidden', false)
+}
+
+function mouseout (d) {
+ /*
+   On mouse out, remove the highlight
+ */
+ d3.select('#tooltip').classed('hidden', true)
+}
 
 function fillMap (d) {
+  var law = document.getElementById('myList').value
 
-var l = datos.filter(dd => {
-    return dd.distrito === d.properties.provincia
+  var l = datos.filter(dd => {
+    // return dd.distrito === d.properties.provincia
+    if (law === 'todas') {
+      return dd.distrito === d.properties.provincia
+    } else {
+      return dd.asunto === law && dd.distrito === d.properties.provincia
+    }
   })
 
   var votosPositivos = l.filter(dd => {
@@ -795,53 +826,6 @@ var l = datos.filter(dd => {
 
   return d3.interpolateRdYlGn(votosPositivos / l.length)
 }
-
-// function fillMap2 (d) {
-
-// var l = datos.filter(dd => {
-//     return dd.distrito === d.properties.provincia
-//   })
-
-//   var votosPositivos = l.filter(dd => {
-//     return dd.voto === 1
-//   }).length
-
-//   return d3.interpolateRdYlGn(votosPositivos / l.length)
-// }
-
-
-// document.getElementById("myList").onchange = function() {
-// var dataOption = document.getElementById("myList").value;
-//    if(dataOption=="law1"){
-   
-//    return fillMap ()
-//    }
-//    else if(dataOption=="law2"){
-//    return fillMap2 ()
-  
-//    }
-//    else if(dataOption=="law3"){
-//    return fillMap ()
-//    }
-//    else if(dataOption=="law4"){
-//    return fillMap ()
-//    }
-//    else if(dataOption=="law5"){
-//    return fillMap ()
-//    }
-//    else if(dataOption=="law6"){
-//    return fillMap ()
-//    }
-//    else if(dataOption=="law7"){
-//    return fillMap ()
-//    }
-//     else if(dataOption=="law8"){
-//    return fillMap ()
-//    }
-
-
-// };
-
 
 function wrap (text, width) {
   /*
@@ -883,47 +867,31 @@ function wrap (text, width) {
   })
 }
 
-function mouseover (d) {
- /*
-   On mouse over highlight the rect and shoe the tooltip
- */
- // Update the tooltip position and value
- d3.select('#tooltip')
-   .style('left', (d3.event.pageX - 150) + 'px')
-   .style('top', (d3.event.pageY + 80) + 'px')
-   .select('#value')
-   .html(() => {
-     return '<strong>Nombre:</strong> ' + d.nombre.replace(/_/g, ' ') +
-            '<br /><strong>Bloque:</strong> ' + d.bloque +
-            '<br /><strong>Distrito:</strong> ' + d.distrito
-   })
-
- // Show the tooltip
- d3.select('#tooltip').classed('hidden', false)
-}
-
-function mouseout (d) {
- /*
-   On mouse out, remove the highlight
- */
- d3.select('#tooltip').classed('hidden', true)
-}
-
-
 
 d3.select('#vista-leyes').on('click', d => {
   plot()
     g.selectAll('.map')
     .attr('opacity', '0')
-
 })
 
 d3.select('#vista-actuales').on('click', d => {
+  showActual = true
   plotActuales()
+})
 
+d3.select('#vista-histricos').on('click', d => {
+  showActual = false
+  plot()
 })
 
 d3.select('#vista-mapa').on('click', d => {
   plotMap()
+})
 
+// Update map colors
+d3.select('#myList').on('change', d => {
+  g.selectAll('path')
+    .transition()
+    .duration(500)
+    .attr('fill', d => { return fillMap(d) })
 })
