@@ -6,6 +6,7 @@ var provincias
 var radio1 = 10
 var radio2 = 10
 var radio3 = 10
+var radio4 = 10
 var radioHover = 30
 var forceStrength = 0.04
 var simulation = d3.forceSimulation()
@@ -64,16 +65,16 @@ var scale
 var centerMap
 if (width <= 576) {
   scale = 1.7
-  centerMap = [svgSize.width / 2, svgSize.height / 2.8]
+  centerMap = [svgSize.width / 2, svgSize.height / 3.2]
 } else if (width <= 768) {
   scale = 1.9
-  centerMap = [svgSize.width / 2, svgSize.height / 2.8]
+  centerMap = [svgSize.width / 2, svgSize.height / 3.2]
 } else if (width <= 992) {
   scale = 1.7
-  centerMap = [svgSize.width / 2, svgSize.height / 2.8]
+  centerMap = [svgSize.width / 2, svgSize.height / 3.2]
 } else {
   scale = 1.5
-  centerMap = [svgSize.width / 2, svgSize.height / 2.8]
+  centerMap = [svgSize.width / 2, svgSize.height / 3.2]
 }
 
 // Define map projection
@@ -156,7 +157,7 @@ function calculateCenetrs () {
  datos.forEach(d => {
   if(d.nombre === "aguilar_eduardo_alberto" || 
      d.nombre === "almirón_ana_claudia" || 
-     d.nombre ==="alperovich_josé_jorge" ||
+     d.nombre === "alperovich_josé_jorge" ||
      d.nombre === "basualdo_roberto_gustavo" || 
      d.nombre === "blas_inés_imelda" || 
      d.nombre === "boyadjian_miriam_ruth" || 
@@ -173,7 +174,7 @@ function calculateCenetrs () {
      d.nombre === "crexell_carmen_lucila"|| 
      d.nombre === "de_angeli_alfredo_luis"|| 
      d.nombre === "elías_de_perez_silvia_beatriz" || 
-     d.nombre ==="espínola_carlos_mauricio" ||
+     d.nombre === "espínola_carlos_mauricio" ||
      d.nombre === "fernández_de_kirchner_cristina" || 
      d.nombre === "fernández_sagasti_anabel" || 
      d.nombre === "fiad_mario_raymundo" || 
@@ -190,7 +191,7 @@ function calculateCenetrs () {
      d.nombre === "kunath_sigrid_elisabeth"|| 
      d.nombre === "lópez_valverde_cristina_del_carmen"|| 
      d.nombre === "lovera_daniel_aníbal" || 
-     d.nombre ==="luenzo_alfredo_héctor" ||
+     d.nombre === "luenzo_alfredo_héctor" ||
      d.nombre === "marino_juan_carlos" || 
      d.nombre === "martínez_ernesto_félix" || 
      d.nombre === "martínez_julio_césar" || 
@@ -207,7 +208,7 @@ function calculateCenetrs () {
      d.nombre === "petcoff_naidenoff_luis_carlos"|| 
      d.nombre === "pichetto_miguel_ángel"|| 
      d.nombre === "pilatti_vergara_maría_inés" || 
-     d.nombre ==="pinedo_federico" ||
+     d.nombre === "pinedo_federico" ||
      d.nombre === "poggi_claudio_javier" || 
      d.nombre === "porcel_de_riccobelli_blanca" || 
      d.nombre === "reutemann_carlos_alberto" || 
@@ -224,7 +225,8 @@ function calculateCenetrs () {
      d.nombre === "uñac_josé_rubén"|| 
      d.nombre === "urtubey_rodolfo_julio"|| 
      d.nombre === "varela_marta"|| 
-     d.nombre === "verasay_pamela_fernanda"
+     d.nombre === "verasay_pamela_fernanda"|| 
+     d.nombre === "durango_norma_haydée"
      ){
 d.actual = "si"
   }else{
@@ -246,6 +248,8 @@ d.radio3 = 0
   })
 
 
+
+
   /* radios para el mapa */
   var nombres = []
   datos.forEach(d =>  {
@@ -258,14 +262,23 @@ d.radio3 = 0
     var nodosIguales1 = datos.filter(dd => { return d == dd.nombre})
 
     nodosIguales1.forEach((d, i) => {
-      if (i === 0) {
-        d.radio2= radio2
+      if (i === 0 && d.actual === "si") {
+d.radio4 = radio4
+d.radio2 = radio2
+      } else if (i === 0) {
+        d.radio2 = radio2
+        d.radio4 = 0
+        
+    
       } else {
         d.radio2 = 0
-      }
+        d.radio4 = 0
+       
+      } 
     })
   })
 }
+
 
 
 function appendAll () {
@@ -307,6 +320,7 @@ function appendAll () {
   node.append('image')
     .attr('xlink:href', d => { return 'imgs/' + d.img })
     .attr('id', d => { return d.nombre })
+
 
   var xAxis = d3.axisBottom(xScale)
     .tickValues(['A FAVOR', 'EN CONTRA', 'SE ABSTIENE', 'EN AUSCENCIA'])
@@ -448,6 +462,11 @@ var svgBg = document.getElementById("graph");
 svgBg.style.background = "linear-gradient(to right, #ffffff 20%, #9BE0B4 20%, #9BE0B4 38%, #F4ABAF 38%, #F4ABAF 56%, #F9F4B7 56%, #F9F4B7 74%, #FFFFFF 74%)";
   //
 
+
+var dropDown = document.getElementById("whatwhat");
+
+dropDown.style.display = "none";
+
   simulation
     .nodes(datos)
     .on('tick', ticked)
@@ -476,7 +495,6 @@ function plotActuales(){
 
   // Append the photos
   node.selectAll('image')
-    .on('click', d => {})
     .transition()
     .duration(3000)
     .ease(d3.easeElastic)
@@ -484,6 +502,7 @@ function plotActuales(){
     .attr('height', d => { return d.radio3 * 2 })
     .attr('x', d => { return -d.radio3 })
     .attr('y', d => { return -d.radio3 })
+
 
   simulation
     .nodes(datos)
@@ -540,10 +559,49 @@ var svgBg = document.getElementById("graph");
 
 svgBg.style.background = "white";
 
+
+var dropDown = document.getElementById("whatwhat");
+
+dropDown.style.display = "block";
+
   simulation
     .nodes(datos)
     .on('tick', ticked)
 }
+
+
+
+function plotMapActuales () {
+
+  simulation.nodes(datos).alphaTarget(1).restart()
+    .force('x', d3.forceX().strength(forceStrength).x(d => { return d.centro2.x }))
+    .force('y', d3.forceY().strength(forceStrength).y(d => { return d.centro2.y }))
+    .force('collide', d3.forceCollide().radius(d => { return d.radio4 }))
+
+  node = g.selectAll('.node')
+    .data(datos)
+
+  node.selectAll('circle')
+    .attr('r', d => { return d.radio4 })
+
+  // Append the photos
+  node.selectAll('image')
+    .on('click', d => {})
+    .transition()
+    .duration(1000)
+    .ease(d3.easeElastic)
+    .attr('width', d => { return d.radio4 * 2 })
+    .attr('height', d => { return d.radio4 * 2 })
+    .attr('x', d => { return -d.radio4 })
+    .attr('y', d => { return -d.radio4 })
+
+
+
+  simulation
+    .nodes(datos)
+    .on('tick', ticked)
+}
+
 
 
 function ticked () {
@@ -648,6 +706,7 @@ function imageHoverOver (d, that) {
       .attr('y', d => { return -d.radio })
       .attr('width', d => { return d.radio * 3 })
       .attr('height', d => { return d.radio * 3 })
+
   }
 }
 
@@ -687,6 +746,7 @@ function imageClick (d) {
       .attr('width', d => { return d.radio * 3 })
       .attr('height', d => { return d.radio * 3 })
 
+
     // set click as true
     clicked = true
   } else {
@@ -713,6 +773,7 @@ function imageClick (d) {
       .attr('width', d => { return d.radio * 2 })
       .attr('height', d => { return d.radio * 2 })
 
+
     // set click as false
     clicked = false
   }
@@ -723,7 +784,8 @@ function imageClick (d) {
 
 
 function fillMap (d) {
-  var l = datos.filter(dd => {
+
+var l = datos.filter(dd => {
     return dd.distrito === d.properties.provincia
   })
 
@@ -733,6 +795,52 @@ function fillMap (d) {
 
   return d3.interpolateRdYlGn(votosPositivos / l.length)
 }
+
+// function fillMap2 (d) {
+
+// var l = datos.filter(dd => {
+//     return dd.distrito === d.properties.provincia
+//   })
+
+//   var votosPositivos = l.filter(dd => {
+//     return dd.voto === 1
+//   }).length
+
+//   return d3.interpolateRdYlGn(votosPositivos / l.length)
+// }
+
+
+// document.getElementById("myList").onchange = function() {
+// var dataOption = document.getElementById("myList").value;
+//    if(dataOption=="law1"){
+   
+//    return fillMap ()
+//    }
+//    else if(dataOption=="law2"){
+//    return fillMap2 ()
+  
+//    }
+//    else if(dataOption=="law3"){
+//    return fillMap ()
+//    }
+//    else if(dataOption=="law4"){
+//    return fillMap ()
+//    }
+//    else if(dataOption=="law5"){
+//    return fillMap ()
+//    }
+//    else if(dataOption=="law6"){
+//    return fillMap ()
+//    }
+//    else if(dataOption=="law7"){
+//    return fillMap ()
+//    }
+//     else if(dataOption=="law8"){
+//    return fillMap ()
+//    }
+
+
+// };
 
 
 function wrap (text, width) {
