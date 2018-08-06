@@ -250,4 +250,22 @@ g > circle {
       width: 90%;
       margin: 10px auto;
     }
+
+.outer{
+    max-width: 600px;
+    overflow-x: scroll;
+
+}
+
+.outer p:before{
+  content: "Scroll to Explore";
+   border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+
 }
