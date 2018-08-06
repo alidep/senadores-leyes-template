@@ -239,6 +239,10 @@ g > circle {
   color: #0BC3C9;
 }
 
+.outer p:before{
+  display:none;
+}
+
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
@@ -258,6 +262,7 @@ g > circle {
 }
 
 .outer p:before{
+  diplay:block;
   content: "Scroll to Explore >>";
   background:#F9DB5A;
   padding:10px;
