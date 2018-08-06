@@ -258,7 +258,7 @@ g > circle {
 }
 
 .outer p:before{
-  content: "&larr; Scroll to Explore &rarr;";
+  content: "Scroll to Explore >>";
   text-align:center;
 
 }
