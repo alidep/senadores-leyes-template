@@ -259,7 +259,8 @@ g > circle {
 
 .outer p:before{
   content: "Scroll to Explore >>";
-  text-align:center;
+  background:#F9DB5A;
+  padding:10px;
 
 }
 
