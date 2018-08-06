@@ -238,3 +238,16 @@ g > circle {
   font-weight: 700;
   color: #0BC3C9;
 }
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .btns{
+        width: 100%;
+    }
+    .btns button{
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+    }
+}
