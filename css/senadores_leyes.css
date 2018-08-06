@@ -256,8 +256,10 @@ g > circle {
     overflow-x: scroll;
 
 }
+
 .outer p:before{
-  content: "Scroll to Explore >";
+  content: "&larr; Scroll to Explore &rarr;";
+  text-align:center;
 
 }
 
