@@ -60,16 +60,15 @@ var yScale = d3.scaleOrdinal()
            'regimen empreadas domesticas', 'inceminacion arifical',
            'trata personas', 'educacion sexual integral',
            'asignacion universal', 'reforma provicional'])
-
 // Map position and scale
 var scale
 var centerMap
-if (width <= 576) {
-  scale = 1.7
-  centerMap = [svgSize.width / 2, svgSize.height / 3.2]
-} else if (width <= 768) {
-  scale = 1.9
-  centerMap = [svgSize.width / 2, svgSize.height / 3.2]
+if (window.innerWidth <= 576) {
+  scale = 1
+  centerMap = [svgSize.width / 5.5, svgSize.height / 5]
+} else if (window.innerWidth <= 768) {
+  scale = 1
+  centerMap = [svgSize.width / 5.5, svgSize.height / 5]
 } else if (width <= 992) {
   scale = 1.7
   centerMap = [svgSize.width / 2, svgSize.height / 3.2]
@@ -77,7 +76,6 @@ if (width <= 576) {
   scale = 1.5
   centerMap = [svgSize.width / 2, svgSize.height / 3.2]
 }
-
 // Define map projection
 var projection = d3.geoEquirectangular()
   .center([-63, -42]) // set centre to further North
