@@ -239,7 +239,7 @@ g > circle {
   color: #0BC3C9;
 }
 
-.outer p:before{
+#outer_p{
   display:none;
 }
 
@@ -261,13 +261,8 @@ g > circle {
 
 }
 
-.outer p:before{
-  diplay:block;
-  content: "Scroll to Explore >>";
-  background:#F9DB5A;
-  padding:10px;
-
-}
+#outer_p{
+  display:block;}
 
 
 }
